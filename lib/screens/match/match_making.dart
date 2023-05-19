@@ -285,7 +285,7 @@ class _AddingImageAndScoreState extends State<imageAndScore> {
                 color: Colors.red,
               ),
 
-              Text("${widget.win} ${widget.loss} ${widget.point}", style: TextStyle(
+              Text("${widget.win} win ${widget.loss} loss ${widget.point} points" , style: TextStyle(
                   color: Colors.grey[700],
                   fontSize: 18,
                   fontWeight: FontWeight.normal
@@ -388,7 +388,7 @@ class Match_making extends StatefulWidget {
 class _Match_makingState extends State<Match_making> {
   @override
   Widget build(BuildContext context) {
-    CollectionReference _matchCardData = FirebaseFirestore.instance.collection('Teams');
+    CollectionReference _matchCardData = FirebaseFirestore.instance.collection('Hello');
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -426,7 +426,7 @@ class _Match_makingState extends State<Match_making> {
         ),
       ),
       body: FutureBuilder<DocumentSnapshot>(
-        future: _matchCardData.doc("KB5HpnzBxhblEu6vjdsW").get(),
+        future: _matchCardData.doc("0sAoNWvzooHrvEapBWLa").get(),
         builder:
             (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
 
@@ -440,6 +440,7 @@ class _Match_makingState extends State<Match_making> {
 
           if (snapshot.connectionState == ConnectionState.done) {
             Map<String, dynamic> data = snapshot.data!.data() as Map<String, dynamic>;
+            // print(data.length);
             // return Text("Full Name: ${data['full_name']} ${data['last_name']}");
             return Padding(
               padding: const EdgeInsets.all(10),
@@ -447,7 +448,7 @@ class _Match_makingState extends State<Match_making> {
                 child: Card(
                   child: Column(
                     children: [
-                      for(int i = 0;i<matches.length;i++)...[
+                      for(int i = 0;i<data.length;i++)...[
                         GestureDetector(
                           onTap: (){
                             print("hello");
@@ -460,10 +461,10 @@ class _Match_makingState extends State<Match_making> {
                             ),
                             child: Column(
                               children : [
-                                head_scheduled_match_card(dateOfGame: data['MatchMakingCard'][0], timeOfMatch: data['MatchMakingCard'][0], weather: matches[i].weather),
-                                middle_scheduled_match_card(universityName: data['MatchMakingCard'][0], address: matches[i].address),
-                                distance(carDistance: matches[i].carDistance, trainDistance: matches[i].trainDistance, walkDistance: matches[i].walkDistance),
-                                imageAndScore(win: matches[i].win, loss: matches[i].loss, point: matches[i].point),
+                                head_scheduled_match_card(dateOfGame: data['0']['date'], timeOfMatch: data['0']['time'], weather: data['0']['mode']),
+                                middle_scheduled_match_card(universityName: data['0']['university'], address: data['0']['address']),
+                                distance(carDistance: data['0']['car'], trainDistance: data['0']['train'], walkDistance: data['0']['walk']),
+                                imageAndScore(win: data['0']['win'], loss: data['0']['loss'], point: data['0']['points']),
                                 // const bottom(),
                                 const Button(),
                               ],
