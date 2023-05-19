@@ -2,6 +2,7 @@ import 'package:ai_match_making_app/screens/Base/home_screen.dart';
 import 'package:ai_match_making_app/screens/Base/my_page.dart';
 import 'package:flutter/material.dart';
 import 'package:ai_match_making_app/screens/modals/info_modal.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../reusable_widgets/reusable_widgets.dart';
 
 // making class of variables which we required in the form of list in this format from firebase
@@ -387,6 +388,7 @@ class Match_making extends StatefulWidget {
 class _Match_makingState extends State<Match_making> {
   @override
   Widget build(BuildContext context) {
+    CollectionReference _matchCardData = FirebaseFirestore.instance.collection('Teams');
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -423,40 +425,62 @@ class _Match_makingState extends State<Match_making> {
           ],
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(10),
-        child: SingleChildScrollView(
-          child: Card(
-            child: Column(
-              children: [
-                for(int i = 0;i<matches.length;i++)...[
-                  GestureDetector(
-                    onTap: (){
-                      print("hello");
-                    },
-                    child: Card(
-                      shape: const RoundedRectangleBorder(
-                          side: BorderSide(
-                            color: Colors.black,
-                          )
-                      ),
-                      child: Column(
-                        children : [
-                          head_scheduled_match_card(dateOfGame: matches[i].dateOfGame, timeOfMatch: matches[i].timeOfMatch, weather: matches[i].weather),
-                          middle_scheduled_match_card(universityName: matches[i].opponentName, address: matches[i].address),
-                          distance(carDistance: matches[i].carDistance, trainDistance: matches[i].trainDistance, walkDistance: matches[i].walkDistance),
-                          imageAndScore(win: matches[i].win, loss: matches[i].loss, point: matches[i].point),
-                          // const bottom(),
-                          const Button(),
-                        ],
-                      ),
-                    ),
+      body: FutureBuilder<DocumentSnapshot>(
+        future: _matchCardData.doc("KB5HpnzBxhblEu6vjdsW").get(),
+        builder:
+            (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+
+          if (snapshot.hasError) {
+            return Text("Something went wrong");
+          }
+
+          if (snapshot.hasData && !snapshot.data!.exists) {
+            return Text("Document does not exist");
+          }
+
+          if (snapshot.connectionState == ConnectionState.done) {
+            Map<String, dynamic> data = snapshot.data!.data() as Map<String, dynamic>;
+            // return Text("Full Name: ${data['full_name']} ${data['last_name']}");
+            return Padding(
+              padding: const EdgeInsets.all(10),
+              child: SingleChildScrollView(
+                child: Card(
+                  child: Column(
+                    children: [
+                      for(int i = 0;i<matches.length;i++)...[
+                        GestureDetector(
+                          onTap: (){
+                            print("hello");
+                          },
+                          child: Card(
+                            shape: const RoundedRectangleBorder(
+                                side: BorderSide(
+                                  color: Colors.black,
+                                )
+                            ),
+                            child: Column(
+                              children : [
+                                head_scheduled_match_card(dateOfGame: data['MatchMakingCard'][0], timeOfMatch: data['MatchMakingCard'][0], weather: matches[i].weather),
+                                middle_scheduled_match_card(universityName: data['MatchMakingCard'][0], address: matches[i].address),
+                                distance(carDistance: matches[i].carDistance, trainDistance: matches[i].trainDistance, walkDistance: matches[i].walkDistance),
+                                imageAndScore(win: matches[i].win, loss: matches[i].loss, point: matches[i].point),
+                                // const bottom(),
+                                const Button(),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ],
                   ),
-                ],
-              ],
-            ),
-          ),
-        ),
+                ),
+              ),
+            );
+
+          }
+
+          return Text("loading");
+        },
       ),
     );
   }
