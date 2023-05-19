@@ -4,24 +4,24 @@ import '../match/match_making.dart';
 
 
 List<matchMakingCard> requested_team = [
-  matchMakingCard('April 22nd', 'wrfsaf University','9:00-11:00', true, 'address of the university', '15 point', '15 point', '16 point', 1,'10 win', '1 loss', '3 point'),
-  matchMakingCard('April 23rd', 'Miyajima University', '13:00-15:00', true, 'address of the university', '50 point', '15 point', '35 point',1, '12 win','2 loss','5 point'),
-  matchMakingCard('April 23rd', 'Sakuragawa high School', '15:00-17:00', true, 'address of the university', '65 point', '15 point', '25 point',1, '2 win','1 loss', '3 point'),
-  matchMakingCard('April 25th', 'Koya university','17:00-19:00', true, 'address of the university', '25 point', '55 point', '15 point',2, '6 win','1 loss', '3 point'),
-  matchMakingCard('April 29th', 'Hanada University', '12:00-14:00',true, 'address of the university', '15 point', '45 point', '85 point',3,'6 win','1 loss', '3 point'),
-  matchMakingCard('April 30th', 'Haruzaki University', '9:00-11:00',true, 'address of the university', '35 point', '35 point', '5 point',2,'6 win','1 loss', '3 point'),
-  matchMakingCard('May 3rd', 'Koya university', '16:00-18:00',true, 'address of the university', '10 point', '25 point', '12 point',1,'6 win','1 loss', '3 point'),
-  matchMakingCard('May 6th', 'Haruzaki University', '14:00-16:00',true, 'address of the university', '15 point', '10 point', '18 point',1,'6 win','1 loss', '3 point'),
+  matchMakingCard('April 22nd', 'wrfsaf University','9:00-11:00', true, 'address of the university', '15 point', '15 point', '16 point', 1,'10', '1', '3'),
+  matchMakingCard('April 23rd', 'Miyajima University', '13:00-15:00', true, 'address of the university', '50 point', '15 point', '35 point',1, '12','2','5'),
+  matchMakingCard('April 23rd', 'Sakuragawa high School', '15:00-17:00', true, 'address of the university', '65 point', '15 point', '25 point',1, '2','1', '3'),
+  matchMakingCard('April 25th', 'Koya university','17:00-19:00', true, 'address of the university', '25 point', '55 point', '15 point',2, '6','1', '3'),
+  matchMakingCard('April 29th', 'Hanada University', '12:00-14:00',true, 'address of the university', '15 point', '45 point', '85 point',3,'6','1', '3'),
+  matchMakingCard('April 30th', 'Haruzaki University', '9:00-11:00',true, 'address of the university', '35 point', '35 point', '5 point',2,'6','1', '3'),
+  matchMakingCard('May 3rd', 'Koya university', '16:00-18:00',true, 'address of the university', '10 point', '25 point', '12 point',1,'6','1', '3'),
+  matchMakingCard('May 6th', 'Haruzaki University', '14:00-16:00',true, 'address of the university', '15 point', '10 point', '18 point',1,'6','1', '3'),
 ];
 List<matchMakingCard> registered_team = [
-  matchMakingCard('April 22nd', 'Hanada University','9:00-11:00', true, 'address of the university', '15 point', '15 point', '16 point', 1,'10 win', '1 loss', '3 point'),
-  matchMakingCard('April 23rd', 'Miyajima efw', '13:00-15:00', true, 'address of the university', '50 point', '15 point', '35 point',1, '12 win','2 loss','5 point'),
-  matchMakingCard('April 23rd', 'Sakuragawa high School', '15:00-17:00', true, 'address of the university', '65 point', '15 point', '25 point',1, '2 win','1 loss', '3 point'),
-  matchMakingCard('April 25th', 'Koya university','17:00-19:00', true, 'address of the university', '25 point', '55 point', '15 point',2, '6 win','1 loss', '3 point'),
-  matchMakingCard('April 29th', 'Hanada University', '12:00-14:00',true, 'address of the university', '15 point', '45 point', '85 point',3,'6 win','1 loss', '3 point'),
-  matchMakingCard('April 30th', 'Haruzaki University', '9:00-11:00',true, 'address of the university', '35 point', '35 point', '5 point',2,'6 win','1 loss', '3 point'),
-  matchMakingCard('May 3rd', 'Koya university', '16:00-18:00',true, 'address of the university', '10 point', '25 point', '12 point',1,'6 win','1 loss', '3 point'),
-  matchMakingCard('May 6th', 'Haruzaki University', '14:00-16:00',true, 'address of the university', '15 point', '10 point', '18 point',1,'6 win','1 loss', '3 point'),
+  matchMakingCard('April 22nd', 'Hanada University','9:00-11:00', true, 'address of the university', '15 point', '15 point', '16 point', 1,'10', '1', '3'),
+  matchMakingCard('April 23rd', 'Miyajima efw', '13:00-15:00', true, 'address of the university', '50 point', '15 point', '35 point',1, '12','2','5'),
+  matchMakingCard('April 23rd', 'Sakuragawa high School', '15:00-17:00', true, 'address of the university', '65 point', '15 point', '25 point',1, '2','1', '3'),
+  matchMakingCard('April 25th', 'Koya university','17:00-19:00', true, 'address of the university', '25 point', '55 point', '15 point',2, '6','1', '3'),
+  matchMakingCard('April 29th', 'Hanada University', '12:00-14:00',true, 'address of the university', '15 point', '45 point', '85 point',3,'6','1', '3'),
+  matchMakingCard('April 30th', 'Haruzaki University', '9:00-11:00',true, 'address of the university', '35 point', '35 point', '5 point',2,'6','1', '3'),
+  matchMakingCard('May 3rd', 'Koya university', '16:00-18:00',true, 'address of the university', '10 point', '25 point', '12 point',1,'6','1', '3'),
+  matchMakingCard('May 6th', 'Haruzaki University', '14:00-16:00',true, 'address of the university', '15 point', '10 point', '18 point',1,'6','1', '3'),
 ];
 
 class Request_manage extends StatefulWidget {
